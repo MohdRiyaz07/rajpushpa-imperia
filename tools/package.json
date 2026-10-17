@@ -1,0 +1,9 @@
+{
+  "name": "rajapushpa-imperia-tools",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "mupdf": "^1.26.3",
+    "sharp": "^0.35.5"
+  }
+}

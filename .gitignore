@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.freebuff/
+work/
+**/.env
+**/.env.*
+!.env.example
+vite.log
+*.log
