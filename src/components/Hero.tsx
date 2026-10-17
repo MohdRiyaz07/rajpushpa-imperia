@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDown, MapPin } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { project, stats } from "../data/projectData";
 import { offer } from "../data/pricing";
 import { useEnquiry } from "./Enquiry";
@@ -41,18 +41,6 @@ export default function Hero() {
 
       <div className="container-x relative flex min-h-[100svh] flex-col justify-end pb-14 pt-28 md:pb-16 md:pt-32">
         <div className="max-w-4xl">
-          <motion.p
-            initial={reduced ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
-            className="eyebrow flex flex-wrap items-center gap-x-3 gap-y-1 text-terracotta"
-          >
-            {/* <MapPin size={13} className="translate-y-px" /> */}
-            {/* <span>{project.coverLocationLine}</span> */}
-            {/* <span className="text-ivory/35">/</span> */}
-            {/* <span className="text-ivory/80">{project.context}</span> */}
-          </motion.p>
-
           <motion.h1
             initial={reduced ? false : { opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
