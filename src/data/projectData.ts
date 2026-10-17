@@ -53,10 +53,11 @@ export const overview = {
   eyebrow: "The Project",
   title: "A community designed to give you more life per sq.\u00a0ft.",
   intro:
-    "Rajapushpa Imperia is a 24-acre residential development of 8 towers and 40 floors within Rajapushpa Lifestyle City at Tellapur. The brochure describes a layout where more than 82% of the ground is left open — landscaped decks, water features and podium-level walking space — with 2 and 3 BHK residences sized approximately 1,350 to 2,890 sq. ft.",
+    "Rajapushpa Imperia is a 24-acre development of 8 towers and 40 floors inside Rajapushpa Lifestyle City at Tellapur — where the brochure leaves more than 82% of the ground open, and every home looks onto landscape.",
   body: [
     "At Imperia, the plan puts towers on the edges of the site and gives the centre back to landscape, so homes look onto greenery rather than vehicular movement. Podium-level promenades, a central lawn and a clubhouse form the social core of the community.",
     "Every tower carries a shared vocabulary — an imposing entrance lounge, high-speed elevators, dedicated pick-up and drop-off zones and 100% power backup — as listed in the brochure’s exclusive project features.",
+    
   ],
   image: "/assets/architecture/promenade.webp",
   imageAlt:
