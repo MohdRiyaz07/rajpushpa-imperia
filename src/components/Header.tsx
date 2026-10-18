@@ -12,8 +12,8 @@ export interface NavItem {
 }
 
 export const navItems: NavItem[] = [
-  { id: "overview", label: "Overview" },
   { id: "offer", label: "Offers" },
+  { id: "overview", label: "Overview" },
   { id: "residences", label: "Residences" },
   { id: "amenities", label: "Amenities" },
   { id: "floor-plans", label: "Floor Plans" },
@@ -211,7 +211,7 @@ export default function Header() {
                       className="flex w-full items-center justify-between border-b border-charcoal/10 py-4 text-left"
                     >
                       <span className="display-3 text-forest-dark">{item.label}</span>
-                      <span className="eyebrow text-terracotta">
+                      <span className="eyebrow text-forest-dark">
                         {String(navItems.indexOf(item) + 1).padStart(2, "0")}
                       </span>
                     </button>

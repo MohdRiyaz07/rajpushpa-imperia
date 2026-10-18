@@ -38,7 +38,7 @@ export default function FAQ() {
                           aria-expanded={isOpen}
                           aria-controls={panelId}
                           onClick={() => setOpen(isOpen ? null : i)}
-                          className="flex w-full items-start justify-between gap-6 py-5 text-left transition hover:text-terracotta"
+                          className="flex w-full items-start justify-between gap-6 py-5 text-left transition hover:text-forest-dark"
                         >
                           <span className="text-[1rem] font-medium leading-snug text-forest-dark">
                             {f.q}

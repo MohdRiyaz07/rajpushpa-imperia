@@ -116,8 +116,7 @@ const empty: FormState = {
 };
 
 const configurations = [
-  "Premium 3 BHK · 2345 – 2880 sft (per the offer)",
-  "2 or 3 BHK · 1,350 – 2,890 sft (per the brochure)",
+  "Premium 2, 2.5 & 3 BHK · 1,350 – 2,880 sft",
   "Sundeck apartment",
   "Centre-balcony apartment",
   "Not sure yet — please advise",
@@ -275,25 +274,27 @@ export function EnquiryForm({
     }
   };
 
+  const darkVariant = variant === "section" || variant === "modal";
   const field = (key: keyof FormState) =>
     errors[key] ? (
-      <p className="mt-1.5 flex items-center gap-1.5 text-[0.78rem] text-[#b5462f]">
+      <p className={`mt-1.5 flex items-center gap-1.5 text-[0.78rem] ${
+        darkVariant ? "text-rose-200" : "text-[#b5462f]"
+      }`}>
         <AlertCircle size={13} /> {errors[key]}
       </p>
     ) : null;
 
-  const darkVariant = variant === "section" || variant === "modal";
   const inputCls = (key: keyof FormState) =>
     `field ${errors[key] ? "field-error" : ""} ${
       darkVariant
-        ? "!border-ivory/15 !bg-forest-dark/55 !text-ivory placeholder:!text-ivory/40"
+        ? "!border-ivory/50 !bg-ivory !text-charcoal placeholder:!text-muted"
         : ""
     }`;
   const labelCls = `label ${
-    darkVariant ? "!text-ivory/75" : ""
+    darkVariant ? "!text-ivory/90" : ""
   }`;
-  const subtleText = darkVariant ? "text-ivory/55" : "text-muted";
-  const requiredMark = "text-terracotta";
+  const subtleText = darkVariant ? "text-ivory/80" : "text-muted";
+  const requiredMark = darkVariant ? "text-rose-100" : "text-terracotta";
 
   if (status === "success") {
     return (
@@ -305,7 +306,7 @@ export function EnquiryForm({
       >
         <span className={`grid h-14 w-14 place-items-center rounded-full ${
           darkVariant
-            ? "bg-ivory/10 text-terracotta"
+            ? "bg-ivory/10 text-rose-100"
             : "bg-forest/10 text-forest"
         }`}>
           <CheckCircle2 size={26} />
@@ -439,7 +440,7 @@ export function EnquiryForm({
         {request.details && (
           <p className={`rounded-lg px-3.5 py-2.5 text-[0.8rem] leading-relaxed ${
             darkVariant
-              ? "bg-forest-dark/60 text-ivory/70"
+              ? "bg-forest-dark/60 text-ivory/90"
               : "bg-ivory text-muted"
           }`}>
             <span className={`font-medium ${
@@ -467,7 +468,7 @@ export function EnquiryForm({
         </div>
 
         <label className={`flex cursor-pointer items-start gap-3 ${
-          darkVariant ? "text-ivory/70" : ""
+          darkVariant ? "text-ivory/90" : ""
         }`}>
           <input
             type="checkbox"
@@ -481,14 +482,16 @@ export function EnquiryForm({
             }}
           />
           <span className={`text-[0.82rem] leading-relaxed ${
-            darkVariant ? "text-ivory/70" : "text-muted"
+            darkVariant ? "text-ivory/90" : "text-muted"
           }`}>
             I agree to be contacted about {project.name} by the developer or an
             authorized sales representative.
           </span>
         </label>
         {errors.consent && (
-          <p className="flex items-center gap-1.5 text-[0.78rem] text-[#b5462f]">
+          <p           className={`flex items-center gap-1.5 text-[0.78rem] ${
+            darkVariant ? "text-rose-200" : "text-[#b5462f]"
+          }`}>
             <AlertCircle size={13} /> {errors.consent}
           </p>
         )}
@@ -497,7 +500,11 @@ export function EnquiryForm({
       {status === "error" && (
         <p
           role="alert"
-          className="mt-5 flex flex-wrap items-start gap-2 rounded-lg border border-[#b5462f]/30 bg-[#b5462f]/5 p-3 text-[0.82rem] text-[#b5462f]"
+          className={`mt-5 flex flex-wrap items-start gap-2 rounded-lg border p-3 text-[0.82rem] ${
+            darkVariant
+              ? "border-rose-200/40 bg-rose-200/10 text-rose-100"
+              : "border-[#b5462f]/30 bg-[#b5462f]/5 text-[#b5462f]"
+          }`}
         >
           <AlertCircle size={15} className="mt-0.5 shrink-0" />
           Your browser blocked the WhatsApp window. Please call{" "}
@@ -619,13 +626,13 @@ function EnquiryModal({
                 className="display-1 mt-8 max-w-md text-ivory"
               >
                 Request a{" "}
-                <span className="italic text-terracotta">conversation.</span>
+                <span className="italic text-ivory">conversation.</span>
               </h2>
-              <p className="mt-5 max-w-sm text-[0.96rem] leading-relaxed text-ivory/70">
+              <p className="mt-5 max-w-sm text-[0.96rem] leading-relaxed text-ivory/90">
                 Share a few details and prepare a WhatsApp enquiry for the
                 Rajapushpa Imperia project team.
               </p>
-              <p className="mt-8 text-[0.76rem] leading-relaxed text-ivory/45">
+              <p className="mt-8 text-[0.76rem] leading-relaxed text-ivory/80">
                 {project.locationLine}
               </p>
             </div>
@@ -640,11 +647,11 @@ function EnquiryModal({
                 <X size={19} />
               </button>
 
-              <p className="eyebrow pr-12 text-terracotta">Get in touch</p>
+              <p className="eyebrow pr-12 text-rose-100">Get in touch</p>
               <h3 className="display-3 mt-4 pr-10 text-ivory">
                 Request a private callback
               </h3>
-              <p className="mt-2 max-w-xl text-[0.86rem] leading-relaxed text-ivory/60">
+              <p className="mt-2 max-w-xl text-[0.86rem] leading-relaxed text-ivory/85">
                 Complete the form to prepare a WhatsApp enquiry for the project
                 contact.
               </p>

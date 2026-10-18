@@ -52,7 +52,7 @@ export function SectionHead({
 }) {
   const muted = tone === "light" ? "text-ivory/70" : "text-muted";
   const heading = tone === "light" ? "text-ivory" : "text-forest-dark";
-  const accent = tone === "light" ? "text-terracotta" : "text-terracotta";
+  const accent = tone === "light" ? "text-rose-100" : "text-forest-dark";
 
   return (
     <div

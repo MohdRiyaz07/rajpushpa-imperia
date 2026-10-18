@@ -49,7 +49,7 @@ export default function Pricing() {
           <Reveal delay={0.1} className="h-full min-w-0">
             <div className="flex h-full flex-col rounded-2xl bg-white p-5 shadow-sm ring-1 ring-charcoal/8 sm:p-6 lg:p-7">
               <div className="flex flex-1 flex-col justify-center">
-                <p className="eyebrow text-terracotta">Price Sheet Request</p>
+                <p className="eyebrow text-forest-dark">Price Sheet Request</p>
                 <h3 className="display-2 mt-4 text-forest-dark">
                   Ask for the latest details.
                 </h3>
@@ -69,14 +69,14 @@ export default function Pricing() {
               <div className="mt-8 space-y-4 border-t border-charcoal/10 pt-6">
                 <a
                   href={priceSheetContact.phoneHref}
-                  className="flex items-center gap-3 text-sm font-medium text-forest-dark transition hover:text-terracotta"
+                  className="flex items-center gap-3 text-sm font-medium text-forest-dark transition hover:text-forest"
                 >
                   <Phone size={15} className="shrink-0 text-terracotta" />
                   <span className="tnum">{priceSheetContact.phone}</span>
                 </a>
                 <a
                   href={priceSheetContact.emailHref}
-                  className="flex items-center gap-3 break-all text-sm font-medium text-forest-dark transition hover:text-terracotta"
+                  className="flex items-center gap-3 break-all text-sm font-medium text-forest-dark transition hover:text-forest"
                 >
                   <Mail size={15} className="shrink-0 text-terracotta" />
                   {priceSheetContact.email}
@@ -85,7 +85,7 @@ export default function Pricing() {
                   href={priceSheetContact.websiteHref}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="flex items-center gap-3 text-sm font-medium text-forest-dark transition hover:text-terracotta"
+                  className="flex items-center gap-3 text-sm font-medium text-forest-dark transition hover:text-forest"
                 >
                   <Globe size={15} className="shrink-0 text-terracotta" />
                   {priceSheetContact.website}

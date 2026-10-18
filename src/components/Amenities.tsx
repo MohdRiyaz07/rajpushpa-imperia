@@ -43,7 +43,7 @@ export default function Amenities() {
         />
 
         <Reveal delay={0.1}>
-          <p className="tnum mt-6 text-[0.8rem] uppercase tracking-[0.16em] text-ivory/50">
+          <p className="tnum mt-6 text-[0.8rem] uppercase tracking-[0.16em] text-ivory/85">
             {total} listed amenities across {amenityGroups.length} groups
           </p>
         </Reveal>
@@ -61,12 +61,12 @@ export default function Amenities() {
                   >
                     <div className="p-7 md:p-9">
                       <div className="flex items-start gap-4">
-                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-terracotta/15 text-terracotta">
+                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-terracotta/15 text-rose-100">
                           <Icon size={20} />
                         </span>
                         <div>
                           <h3 className="display-3 text-ivory">{group.title}</h3>
-                          <p className="mt-2 max-w-xl text-[0.9rem] leading-relaxed text-ivory/60">
+                          <p className="mt-2 max-w-xl text-[0.9rem] leading-relaxed text-ivory/85">
                             {group.blurb}
                           </p>
                         </div>
@@ -99,7 +99,7 @@ export default function Amenities() {
                         />
                         <div
                           aria-hidden="true"
-                          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,43,34,0.92)_0%,rgba(11,43,34,0.25)_45%,rgba(11,43,34,0)_100%)] lg:block"
+                          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(52,17,23,0.92)_0%,rgba(52,17,23,0.25)_45%,rgba(52,17,23,0)_100%)] lg:block"
                         />
                       </div>
                     )}

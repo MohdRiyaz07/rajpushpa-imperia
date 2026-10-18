@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-forest: #173d30;
-  --color-forest-dark: #0b2b22;
-  --color-ivory: #f7f4ec;
-  --color-sage: #dde5db;
-  --color-terracotta: #c77948;
+  --color-forest: #c8757d;
+  --color-forest-dark: #84434b;
+  --color-ivory: #fff7f6;
+  --color-sage: #f2dfe1;
+  --color-terracotta: #c8757d;
   --color-charcoal: #222722;
   --color-muted: #6e756f;
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
@@ -42,12 +42,12 @@
   }
 
   ::selection {
-    background: #c77948;
+    background: #c8757d;
     color: #ffffff;
   }
 
   :focus-visible {
-    outline: 2px solid #c77948;
+    outline: 2px solid #c8757d;
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -78,7 +78,7 @@
     font-size: clamp(2.5rem, 5.6vw, 4.5rem);
     line-height: 1.04;
     letter-spacing: -0.02em;
-    color:#c77948;
+    color: var(--color-terracotta);
   }
 
   .display-2 {
@@ -141,20 +141,20 @@
   }
 
   .btn-accent:hover {
-    background: #b56a3b;
-    border-color: #b56a3b;
+    background: #b35e68;
+    border-color: #b35e68;
     transform: translateY(-1px);
   }
 
   .btn-ghost {
     background: transparent;
     color: var(--color-forest);
-    border: 1px solid color-mix(in srgb, var(--color-forest) 35%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-forest) 40%, transparent);
   }
 
   .btn-ghost:hover {
     border-color: var(--color-forest);
-    background: color-mix(in srgb, var(--color-forest) 6%, transparent);
+    background: color-mix(in srgb, var(--color-forest) 8%, transparent);
   }
 
   .btn-light {
@@ -186,7 +186,7 @@
   .field:focus {
     border-color: var(--color-forest);
     outline: none;
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-forest) 14%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-forest) 16%, transparent);
   }
 
   .field-error {

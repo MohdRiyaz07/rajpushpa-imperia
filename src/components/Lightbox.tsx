@@ -129,7 +129,7 @@ export function Lightbox({
             <figcaption className="mt-4 flex items-center gap-4 text-sm text-ivory/75">
               {item.caption && <span>{item.caption}</span>}
               {items.length > 1 && (
-                <span className="tnum text-ivory/50">
+                <span className="tnum text-ivory/85">
                   {index! + 1} / {items.length}
                 </span>
               )}

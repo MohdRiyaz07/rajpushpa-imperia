@@ -283,7 +283,7 @@ export default function CostEstimator() {
                           <span className="text-[0.85rem] font-semibold text-forest-dark">
                             {p.label}
                           </span>
-                          <span className="tnum text-[0.9rem] font-semibold text-terracotta">
+                          <span className="tnum text-[0.9rem] font-semibold text-forest-dark">
                             ₹ {p.rate.toLocaleString("en-IN")}
                           </span>
                         </span>
@@ -471,16 +471,16 @@ export default function CostEstimator() {
               <div className="h-full overflow-hidden rounded-2xl bg-forest-dark text-ivory">
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ivory/12 px-5 py-5 sm:px-6 md:px-8">
                   <div className="flex items-center gap-3">
-                    <Calculator size={18} className="text-terracotta" />
+                    <Calculator size={18} className="text-rose-100" />
                     <h3 className="display-3 text-ivory">Estimate breakdown</h3>
                   </div>
-                  <span className="rounded-full border border-ivory/15 px-3 py-1 text-[0.68rem] uppercase tracking-[0.12em] text-ivory/55">
+                  <span className="rounded-full border border-ivory/15 px-3 py-1 text-[0.68rem] uppercase tracking-[0.12em] text-ivory/85">
                     Indicative
                   </span>
                 </div>
 
                 <div className="px-5 py-6 sm:px-6 md:px-8">
-                  <p className="text-[0.72rem] uppercase tracking-[0.16em] text-ivory/50">
+                  <p className="text-[0.72rem] uppercase tracking-[0.16em] text-ivory/85">
                     Sale consideration
                   </p>
                   <ul className="mt-3.5 space-y-3">
@@ -489,14 +489,14 @@ export default function CostEstimator() {
                         <span className="min-w-0">
                           <span className="block text-[0.87rem] text-ivory/90">{l.label}</span>
                           {l.detail && (
-                            <span className="mt-0.5 block text-[0.73rem] leading-snug text-ivory/50">
+                            <span className="mt-0.5 block text-[0.73rem] leading-snug text-ivory/80">
                               {l.detail}
                             </span>
                           )}
                         </span>
                         <span
                           className={`tnum shrink-0 text-[0.9rem] ${
-                            l.amount === 0 ? "text-ivory/30" : "font-semibold text-ivory"
+                            l.amount === 0 ? "text-ivory/70" : "font-semibold text-ivory"
                           }`}
                         >
                           {l.amount === 0 ? "—" : inr(l.amount)}
@@ -506,7 +506,7 @@ export default function CostEstimator() {
                   </ul>
 
                   <div className="mt-4 flex items-baseline justify-between gap-5 border-t border-ivory/12 pt-4">
-                    <span className="text-[0.8rem] uppercase tracking-[0.1em] text-ivory/60">
+                    <span className="text-[0.8rem] uppercase tracking-[0.1em] text-ivory/85">
                       Sub-total
                     </span>
                     <span className="tnum text-[1.05rem] font-semibold text-ivory">
@@ -514,7 +514,7 @@ export default function CostEstimator() {
                     </span>
                   </div>
 
-                  <p className="mt-7 text-[0.72rem] uppercase tracking-[0.16em] text-ivory/50">
+                  <p className="mt-7 text-[0.72rem] uppercase tracking-[0.16em] text-ivory/85">
                     Other charges
                   </p>
                   <ul className="mt-3.5 space-y-3">
@@ -523,14 +523,14 @@ export default function CostEstimator() {
                         <span className="min-w-0">
                           <span className="block text-[0.87rem] text-ivory/90">{l.label}</span>
                           {l.detail && (
-                            <span className="mt-0.5 block text-[0.73rem] leading-snug text-ivory/50">
+                            <span className="mt-0.5 block text-[0.73rem] leading-snug text-ivory/80">
                               {l.detail}
                             </span>
                           )}
                         </span>
                         <span
                           className={`tnum shrink-0 text-[0.9rem] ${
-                            l.amount === 0 ? "text-ivory/30" : "font-semibold text-ivory"
+                            l.amount === 0 ? "text-ivory/70" : "font-semibold text-ivory"
                           }`}
                         >
                           {l.amount === 0 ? "—" : inr(l.amount)}
@@ -548,7 +548,7 @@ export default function CostEstimator() {
                         transition={{ duration: 0.25 }}
                         className="overflow-hidden"
                       >
-                        <p className="mt-7 text-[0.72rem] uppercase tracking-[0.16em] text-ivory/50">
+                        <p className="mt-7 text-[0.72rem] uppercase tracking-[0.16em] text-ivory/85">
                           Payable before registration
                         </p>
                         <ul className="mt-3.5 space-y-3">
@@ -562,7 +562,7 @@ export default function CostEstimator() {
                                   {l.label}
                                 </span>
                                 {l.detail && (
-                                  <span className="mt-0.5 block text-[0.73rem] leading-snug text-ivory/50">
+                                  <span className="mt-0.5 block text-[0.73rem] leading-snug text-ivory/80">
                                     {l.detail}
                                   </span>
                                 )}
@@ -579,21 +579,21 @@ export default function CostEstimator() {
 
                   <div className="mt-7 border-t border-ivory/15 pt-5">
                     <div className="flex items-baseline justify-between gap-5">
-                      <span className="text-[0.8rem] uppercase tracking-[0.1em] text-ivory/60">
+                      <span className="text-[0.8rem] uppercase tracking-[0.1em] text-ivory/85">
                         Total before GST
                       </span>
                       <span className="tnum font-display text-[1.85rem] leading-none text-ivory">
                         {inr(totals.total)}
                       </span>
                     </div>
-                    <p className="tnum mt-2 text-right text-[0.78rem] text-ivory/50">
+                    <p className="tnum mt-2 text-right text-[0.78rem] text-ivory/85">
                       ≈ {inr(effectiveRate)} per sq. ft. all-in
                     </p>
                   </div>
 
                   <dl className="mt-6 space-y-2.5 border-t border-ivory/12 pt-5 text-[0.8rem]">
                     <div className="flex items-baseline justify-between gap-5">
-                      <dt className="text-ivory/60">GST</dt>
+                      <dt className="text-ivory/85">GST</dt>
                       <dd className="text-right text-ivory/85">
                         {phase.id === "phase-1"
                           ? "Not applicable — Phase-1 is “No GST” on the price sheet"
@@ -601,9 +601,9 @@ export default function CostEstimator() {
                       </dd>
                     </div>
                     <div className="flex items-baseline justify-between gap-5">
-                      <dt className="text-ivory/60">
+                      <dt className="text-ivory/85">
                         TDS @ 1% of sale consideration
-                        <span className="block text-[0.72rem] text-ivory/40">
+                        <span className="block text-[0.72rem] text-ivory/80">
                           Buyer’s responsibility, per term 1
                         </span>
                       </dt>
@@ -612,7 +612,7 @@ export default function CostEstimator() {
                       </dd>
                     </div>
                     <div className="flex items-baseline justify-between gap-5">
-                      <dt className="text-ivory/60">Stamp duty &amp; registration</dt>
+                      <dt className="text-ivory/85">Stamp duty &amp; registration</dt>
                       <dd className="text-right text-ivory/85">
                         Not stated on the price sheet — as applicable
                       </dd>

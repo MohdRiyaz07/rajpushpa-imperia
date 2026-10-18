@@ -33,7 +33,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <BrandLockup size="footer" />
-            <p className="mt-5 max-w-md text-[0.92rem] leading-relaxed text-ivory/65">
+            <p className="mt-5 max-w-md text-[0.92rem] leading-relaxed text-ivory/85">
               {project.coverLocationLine} — {project.context}. {stats[0].value} acres,{" "}
               {stats[1].value} towers, {stats[2].value} floors.
             </p>
@@ -44,7 +44,7 @@ export default function Footer() {
                   <dt className="sr-only">{s.label}</dt>
                   <dd className="tnum font-display text-[1.5rem] leading-none text-ivory">
                     {s.value}
-                    <span className="ml-2 font-sans text-[0.7rem] font-normal uppercase tracking-[0.12em] text-ivory/50">
+                    <span className="ml-2 font-sans text-[0.7rem] font-normal uppercase tracking-[0.12em] text-ivory/85">
                       {s.label}
                     </span>
                   </dd>
@@ -55,7 +55,7 @@ export default function Footer() {
 
           {/* Navigate */}
           <nav aria-label="Footer">
-            <p className="eyebrow text-terracotta">Explore</p>
+            <p className="eyebrow text-rose-100">Explore</p>
             <ul className="mt-5 space-y-2.5">
               {navItems.map((item) => (
                 <li key={item.id}>
@@ -72,7 +72,7 @@ export default function Footer() {
                 <button
                   type="button"
                   onClick={() => openEnquiry({ type: "General Enquiry" })}
-                  className="text-[0.9rem] text-terracotta transition hover:text-ivory"
+                  className="text-[0.9rem] text-rose-100 transition hover:text-ivory"
                 >
                   Enquire Now
                 </button>
@@ -82,26 +82,26 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="eyebrow text-terracotta">Contact</p>
+            <p className="eyebrow text-rose-100">Contact</p>
             <ul className="mt-5 space-y-4 text-[0.9rem]">
               <li className="flex gap-3">
-                <Phone size={15} className="mt-0.5 shrink-0 text-ivory/45" />
+                <Phone size={15} className="mt-0.5 shrink-0 text-ivory/85" />
                 <span>
                   <a
                     href={priceSheetContact.phoneHref}
-                    className="tnum block font-medium text-ivory transition hover:text-terracotta"
+                    className="tnum block font-medium text-ivory transition hover:text-rose-100"
                   >
                     {priceSheetContact.phone}
                   </a>
-                  <span className="text-[0.76rem] text-ivory/45">Call or WhatsApp</span>
+                  <span className="text-[0.76rem] text-ivory/85">Call or WhatsApp</span>
                 </span>
               </li>
               <li className="flex gap-3">
-                <Mail size={15} className="mt-0.5 shrink-0 text-ivory/45" />
+                <Mail size={15} className="mt-0.5 shrink-0 text-ivory/85" />
                 <span>
                   <a
                     href={priceSheetContact.emailHref}
-                    className="block break-all font-medium text-ivory transition hover:text-terracotta"
+                    className="block break-all font-medium text-ivory transition hover:text-rose-100"
                   >
                     {priceSheetContact.email}
                   </a>
@@ -109,15 +109,15 @@ export default function Footer() {
                     href={priceSheetContact.websiteHref}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="text-[0.76rem] text-ivory/45 underline-offset-4 hover:underline"
+                    className="text-[0.76rem] text-ivory/85 underline-offset-4 hover:underline"
                   >
                     {priceSheetContact.website}
                   </a>
                 </span>
               </li>
               <li className="flex gap-3">
-                <MapPin size={15} className="mt-0.5 shrink-0 text-ivory/45" />
-                <span className="leading-relaxed text-ivory/70">
+                <MapPin size={15} className="mt-0.5 shrink-0 text-ivory/85" />
+                <span className="leading-relaxed text-ivory/90">
                   {project.siteOfficeAddress}
                 </span>
               </li>
@@ -127,7 +127,7 @@ export default function Footer() {
               href={offer.reraHref}
               target="_blank"
               rel="noreferrer noopener"
-              className="mt-6 inline-block border-t border-ivory/12 pt-4 text-[0.78rem] leading-relaxed text-ivory/55 underline-offset-4 transition hover:text-ivory hover:underline"
+              className="mt-6 inline-block border-t border-ivory/12 pt-4 text-[0.78rem] leading-relaxed text-ivory/85 underline-offset-4 transition hover:text-ivory hover:underline"
             >
               {project.reraLabel}
               <br />
@@ -138,19 +138,19 @@ export default function Footer() {
 
         {/* Disclaimer */}
         <div className="mt-14 border-t border-ivory/12 pt-8">
-          <p className="max-w-6xl text-[0.78rem] leading-relaxed text-ivory/60">
+          <p className="max-w-6xl text-[0.78rem] leading-relaxed text-ivory/85">
             {footerDisclaimer}
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-[0.78rem] text-ivory/45">
+            <p className="text-[0.78rem] text-ivory/85">
               © {new Date().getFullYear()} {project.name} — an informational project page by{" "}
               {project.developer}. Not the official developer website.
             </p>
             <button
               type="button"
               onClick={goTop}
-              className="group inline-flex items-center gap-2 self-start text-[0.78rem] uppercase tracking-[0.14em] text-ivory/55 transition hover:text-ivory"
+              className="group inline-flex items-center gap-2 self-start text-[0.78rem] uppercase tracking-[0.14em] text-ivory/85 transition hover:text-ivory"
             >
               Back to top
               <span className="grid h-8 w-8 place-items-center rounded-full border border-ivory/25 transition group-hover:border-ivory/60">

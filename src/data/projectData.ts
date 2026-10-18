@@ -37,11 +37,11 @@ export const stats: Stat[] = [
 ];
 
 export const residenceSummary = {
-  types: "2 & 3 BHK residences",
-  sizeRange: "1,350 – 2,890 sq. ft.",
-  sizeRangeNote: "Brochure: “1350 - 2890 Sq ft Unit Sizes”",
+  types: "Premium 2, 2.5 & 3 BHK Homes",
+  sizeRange: "1,350 – 2,880 sft",
+  sizeRangeNote: "Premium 2, 2.5 & 3 BHK Homes · 1,350 – 2,880 sft",
   highlights: [
-    "Premium Lifestyle 2 & 3 BHK Apartments",
+    "Premium Lifestyle 2, 2.5 & 3 BHK Apartments",
     "Sundeck Apartments",
     "Exotic Designer Landscapes & Waterscapes",
     "Lavish clubhouse with sporting amenities",
@@ -71,7 +71,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What configurations and unit sizes are listed?",
-    a: "The brochure lists Premium Lifestyle 2 & 3 BHK apartments with unit sizes of 1350 – 2890 sq. ft. The supplied promotional offer specifically describes Premium 3 BHK residences of 2345 – 2880 sq. ft. Exact tower-wise areas are shown in the Floor Plans section as area statements from the brochure.",
+    a: "Premium 2, 2.5 and 3 BHK homes are advertised with sizes from 1,350 to 2,880 sft. Exact tower-wise areas are shown in the Floor Plans section.",
   },
   {
     q: "How many towers and floors does the project have?",

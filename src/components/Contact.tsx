@@ -44,14 +44,14 @@ export default function Contact() {
                     key={contact.label}
                     className="flex gap-4 border-b border-ivory/10 pb-4"
                   >
-                    <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-terracotta/15 text-terracotta">
+                    <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-terracotta/15 text-rose-100">
                       <contact.icon size={16} />
                     </span>
                     <span className="min-w-0">
                       {contact.href ? (
                         <a
                           href={contact.href}
-                          className={`block text-[0.98rem] font-medium text-ivory transition hover:text-terracotta ${
+                          className={`block text-[0.98rem] font-medium text-ivory transition hover:text-rose-100 ${
                             contact.icon === Mail ? "break-all" : "break-words"
                           }`}
                         >
@@ -62,7 +62,7 @@ export default function Contact() {
                           {contact.label}
                         </span>
                       )}
-                      <span className="mt-0.5 block text-[0.76rem] leading-relaxed text-ivory/45">
+                      <span className="mt-0.5 block text-[0.76rem] leading-relaxed text-ivory/85">
                         {contact.note}
                       </span>
                     </span>
@@ -74,9 +74,9 @@ export default function Contact() {
 
           <Reveal delay={0.12} className="min-w-0">
             <div className="rounded-2xl border border-ivory/12 bg-forest/55 p-6 shadow-xl sm:p-8 md:p-9">
-              <p className="eyebrow text-terracotta">Get in touch</p>
+              <p className="eyebrow text-rose-100">Get in touch</p>
               <h3 className="display-2 mt-4 text-ivory">Request a private callback.</h3>
-              <p className="mt-3 text-[0.9rem] leading-relaxed text-ivory/65">
+              <p className="mt-3 text-[0.9rem] leading-relaxed text-ivory/85">
                 Complete the form to prepare a WhatsApp enquiry for the project contact.
               </p>
               <div className="mt-7">

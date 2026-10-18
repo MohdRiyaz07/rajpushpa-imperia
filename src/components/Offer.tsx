@@ -29,7 +29,7 @@ export default function Offer() {
                       <span className="rounded-full bg-forest px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-ivory">
                         {opt.phase}
                       </span>
-                      <span className="rounded-full border border-terracotta/40 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-terracotta">
+                      <span className="rounded-full border border-terracotta/40 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-forest-dark">
                         {opt.badge}
                       </span>
                     </div>
@@ -88,12 +88,12 @@ export default function Offer() {
             <dl className="mt-6 grid grid-cols-2 gap-4">
               {phases.map((p) => (
                 <div key={p.id} className="rounded-xl bg-forest-dark p-5 text-ivory">
-                  <dt className="text-[0.72rem] uppercase tracking-[0.14em] text-ivory/60">
+                  <dt className="text-[0.72rem] uppercase tracking-[0.14em] text-ivory/85">
                     {p.label} base price
                   </dt>
                   <dd className="tnum mt-2 font-display text-[1.9rem] leading-none">
                     ₹ {p.rate.toLocaleString("en-IN")}
-                    <span className="ml-1.5 font-sans text-[0.72rem] font-normal uppercase tracking-[0.1em] text-ivory/60">
+                    <span className="ml-1.5 font-sans text-[0.72rem] font-normal uppercase tracking-[0.1em] text-ivory/85">
                       / sft
                     </span>
                   </dd>

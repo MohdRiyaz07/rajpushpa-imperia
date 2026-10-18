@@ -115,7 +115,7 @@ export default function OfferPopup() {
               >
                 <X size={18} />
               </button>
-              <p className="eyebrow pr-12 text-terracotta">{offer.eyebrow}</p>
+              <p className="eyebrow pr-12 text-forest-dark">{offer.eyebrow}</p>
               <h2
                 id="offer-popup-title"
                 className="display-2 mt-4 max-w-xl text-forest-dark"
@@ -133,7 +133,7 @@ export default function OfferPopup() {
                     key={option.id}
                     className="rounded-xl border border-charcoal/10 bg-white p-4"
                   >
-                    <span className="eyebrow text-terracotta">{option.phase}</span>
+                    <span className="eyebrow text-forest-dark">{option.phase}</span>
                     <h3 className="mt-2 text-sm font-semibold leading-snug text-forest-dark">
                       {option.title}
                     </h3>

@@ -183,7 +183,7 @@ export const offer = {
   eyebrow: "The Offer",
   headline: "One ADDRESS, TWO WAYS to OWN",
   locationLine: "@ Rajapushpa LIFE STYLE CITY, TELLAPUR.",
-  configurations: "Premium 3 BHK Residences · 2345 – 2880 sft.",
+  configurations: "Premium 2, 2.5 & 3 BHK Homes · 1,350 – 2,880 sft.",
   reraLine: "TS RERA Reg. No.: P01100003723",
   reraSite: "rera.telangana.gov.in",
   reraHref: "https://rera.telangana.gov.in",

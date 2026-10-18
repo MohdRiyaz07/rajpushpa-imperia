@@ -41,7 +41,7 @@ export default function Location() {
           <div>
             <Reveal delay={0.08}>
               <div className="rounded-2xl bg-forest-dark p-6 text-ivory md:p-7">
-                <p className="eyebrow flex items-center gap-2 text-terracotta">
+                <p className="eyebrow flex items-center gap-2 text-rose-100">
                   <MapPin size={13} /> Address
                 </p>
                 <address className="mt-4 not-italic">
@@ -51,7 +51,7 @@ export default function Location() {
                     </span>
                   ))}
                 </address>
-                <p className="mt-4 border-t border-ivory/12 pt-4 text-[0.78rem] leading-relaxed text-ivory/55">
+                <p className="mt-4 border-t border-ivory/12 pt-4 text-[0.78rem] leading-relaxed text-ivory/85">
                   {location.addressNote}
                 </p>
                 <a
@@ -63,7 +63,7 @@ export default function Location() {
                   Search on Google Maps
                   <ExternalLink size={14} />
                 </a>
-                <p className="mt-3 text-[0.72rem] leading-relaxed text-ivory/45">
+                <p className="mt-3 text-[0.72rem] leading-relaxed text-ivory/80">
                   Opens a Google Maps search for the project name — no verified place listing
                   or coordinates are asserted here.
                 </p>
@@ -108,7 +108,7 @@ export default function Location() {
               return (
                 <Reveal key={group} delay={0.05 * gi}>
                   <div>
-                    <p className="eyebrow border-b border-charcoal/12 pb-3 text-terracotta">
+                    <p className="eyebrow border-b border-charcoal/12 pb-3 text-forest-dark">
                       {group}
                     </p>
                     <ul className="mt-4 space-y-2.5">

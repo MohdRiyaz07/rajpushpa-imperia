@@ -43,12 +43,12 @@ export default function Residences() {
         >
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ivory/12 px-5 py-4 sm:px-6">
             <div>
-              <p className="eyebrow text-terracotta">Residence collection</p>
-              <p className="mt-1 text-sm text-ivory/70">
+              <p className="eyebrow text-rose-100">Residence collection</p>
+              <p className="mt-1 text-sm text-ivory/90">
                 {selected.title} <span className="text-ivory/35">/</span> Brochure plan
               </p>
             </div>
-            <span className="inline-flex items-center gap-2 text-xs text-ivory/60">
+            <span className="inline-flex items-center gap-2 text-xs text-ivory/85">
               <Lock size={13} /> Preview locked
             </span>
           </div>
@@ -59,7 +59,7 @@ export default function Residences() {
                 <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-ivory/75">
                   Browse plan sheets
                 </h3>
-                <span className="eyebrow text-ivory/40">
+                <span className="eyebrow text-ivory/80">
                   {String(floorPlanSheets.length).padStart(2, "0")}
                 </span>
               </div>
@@ -80,7 +80,7 @@ export default function Residences() {
                     >
                       <span className="flex items-start justify-between gap-3">
                         <span className="min-w-0">
-                          <span className={`eyebrow block ${isSelected ? "text-terracotta" : "text-ivory/40"}`}>
+                          <span className={`eyebrow block ${isSelected ? "text-rose-100" : "text-ivory/80"}`}>
                             Plan {String(index + 1).padStart(2, "0")} ·{" "}
                             {sheet.style === "sundeck" ? "Sundeck" : "Centre balcony"}
                           </span>
@@ -89,13 +89,13 @@ export default function Residences() {
                           </span>
                         </span>
                         {isSelected && (
-                          <span className="mt-1 shrink-0 text-terracotta" aria-hidden="true">
+                          <span className="mt-1 shrink-0 text-ivory" aria-hidden="true">
                             <Lock size={14} />
                           </span>
                         )}
                       </span>
                       <span className={`mt-2 block text-[0.72rem] leading-relaxed ${
-                        isSelected ? "text-ivory/65" : "text-ivory/45"
+                        isSelected ? "text-ivory/90" : "text-ivory/80"
                       }`}>
                         {sheet.floors}
                       </span>
@@ -103,7 +103,7 @@ export default function Residences() {
                   );
                 })}
               </div>
-              <p className="mt-4 hidden text-[0.72rem] leading-relaxed text-ivory/45 lg:block">
+              <p className="mt-4 hidden text-[0.72rem] leading-relaxed text-ivory/80 lg:block">
                 Brochure plans are shown as supplied. Confirm dimensions and availability
                 with the project team.
               </p>
@@ -133,10 +133,10 @@ export default function Residences() {
               </div>
               <div className="flex flex-wrap items-center justify-between gap-3 px-1 pt-4">
                 <div className="min-w-0">
-                  <p className="eyebrow text-terracotta">
+                  <p className="eyebrow text-rose-100">
                     {selected.style === "sundeck" ? "Sundeck apartments" : "Centre balcony"}
                   </p>
-                  <p className="mt-1 text-sm text-ivory/70">{selected.floors}</p>
+                  <p className="mt-1 text-sm text-ivory/90">{selected.floors}</p>
                 </div>
                 <button
                   type="button"
@@ -176,7 +176,7 @@ export default function Residences() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="eyebrow text-terracotta">Master Plan</p>
+            <p className="eyebrow text-forest-dark">Master Plan</p>
             <h3 className="display-2 mt-4 text-forest-dark">Eight towers, one landscape.</h3>
             <p className="mt-5 leading-relaxed text-muted">
               The brochure’s master plan places the towers around the perimeter and gives the

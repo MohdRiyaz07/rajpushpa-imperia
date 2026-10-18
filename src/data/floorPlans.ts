@@ -254,5 +254,5 @@ export const floorPlanIntro = {
   lede:
     "Choose a tower pair and residence type to view its original floor plate and area statement.",
   note:
-    "Units are numbered 1–10 per floor plate. The brochure does not label a BHK count against individual units; only the aggregate “2 & 3 BHK” description and the offer’s “Premium 3 BHK · 2345–2880 sft” line are stated, so no configuration is asserted here per unit.",
+    "Units are numbered 1–10 per floor plate. Premium 2, 2.5 & 3 BHK homes are advertised at 1,350–2,880 sft; the brochure does not label a BHK count against individual units, so no configuration is asserted per unit.",
 };

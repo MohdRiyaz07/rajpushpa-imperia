@@ -36,7 +36,7 @@ export default function Hero() {
       {/* Scrims: bottom-weighted for the headline, light top wash for the header. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(11,43,34,0.62)_0%,rgba(11,43,34,0.16)_28%,rgba(11,43,34,0.30)_58%,rgba(11,43,34,0.88)_100%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(52,17,23,0.72)_0%,rgba(52,17,23,0.36)_32%,rgba(52,17,23,0.52)_62%,rgba(52,17,23,0.92)_100%)]"
       />
 
       <div className="container-x relative flex min-h-[100svh] flex-col justify-end pb-14 pt-28 md:pb-16 md:pt-32">
@@ -45,23 +45,27 @@ export default function Hero() {
             initial={reduced ? false : { opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 0.61, 0.36, 1] }}
-            className="display-1 mt-5 #c77948"
+            className="display-1 mt-5 !text-ivory drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]"
           >
             Space to live.
             <br />
-            <span className="italic text-ivory/90">Room to belong.</span>
+            <span className="italic text-ivory">Room to belong.</span>
           </motion.h1>
 
           <motion.p
             initial={reduced ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.22 }}
-            className="mt-6 max-w-2xl text-[1.02rem] leading-relaxed text-ivory/80 md:text-[1.1rem]"
+            className="mt-6 max-w-2xl text-[1.02rem] leading-relaxed text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)] md:text-[1.1rem]"
           >
             {project.name} is a 24-acre development of 8 towers and 40 floors inside
             Rajapushpa Lifestyle City at Tellapur — where the brochure leaves more than
             82% of the ground open, and every home looks onto landscape.
           </motion.p>
+
+          <p className="mt-4 text-sm font-semibold tracking-wide text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)] md:text-base">
+            Premium 2, 2.5 &amp; 3 BHK Homes · 1,350–2,880 sft
+          </p>
 
           <motion.div
             initial={reduced ? false : { opacity: 0, y: 18 }}
@@ -98,7 +102,7 @@ export default function Hero() {
                 <span className="tnum block font-display text-[2.1rem] leading-none text-ivory md:text-[2.6rem]">
                   {s.value}
                 </span>
-                <span className="mt-2 block text-[0.8rem] uppercase tracking-[0.14em] text-ivory/60">
+                <span className="mt-2 block text-[0.8rem] uppercase tracking-[0.14em] text-ivory/85">
                   {s.label}
                 </span>
               </dd>
@@ -107,14 +111,14 @@ export default function Hero() {
         </motion.dl>
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-6">
-          <p className="text-xs uppercase tracking-[0.16em] text-ivory/55">
+          <p className="text-xs uppercase tracking-[0.16em] text-ivory/85">
             {project.reraLabel}
           </p>
 
           <button
             type="button"
             onClick={() => goTo("overview")}
-            className="group hidden items-center gap-2 text-xs uppercase tracking-[0.16em] text-ivory/60 transition hover:text-ivory md:flex"
+            className="group hidden items-center gap-2 text-xs uppercase tracking-[0.16em] text-ivory/85 transition hover:text-ivory md:flex"
           >
             Scroll
             <span className="grid h-9 w-9 place-items-center rounded-full border border-ivory/25 transition group-hover:border-ivory/60">
@@ -122,7 +126,7 @@ export default function Hero() {
             </span>
           </button>
 
-          <p className="text-xs uppercase tracking-[0.16em] text-ivory/55">
+          <p className="text-xs uppercase tracking-[0.16em] text-ivory/85">
             {offer.configurations}
           </p>
         </div>

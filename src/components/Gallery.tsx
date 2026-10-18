@@ -81,11 +81,11 @@ export default function Gallery() {
                 />
                 <span
                   aria-hidden="true"
-                  className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,43,34,0)_35%,rgba(11,43,34,0.78)_100%)]"
+                  className="absolute inset-0 bg-[linear-gradient(180deg,rgba(52,17,23,0)_35%,rgba(52,17,23,0.78)_100%)]"
                 />
                 <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 text-left">
                   <span>
-                    <span className="block text-[0.68rem] uppercase tracking-[0.14em] text-ivory/65">
+                    <span className="block text-[0.68rem] uppercase tracking-[0.14em] text-ivory/90">
                       {item.tag}
                     </span>
                     <span className="mt-1 block text-[0.86rem] font-medium leading-snug text-ivory">

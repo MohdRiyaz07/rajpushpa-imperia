@@ -35,9 +35,8 @@ function Deferred({ children }: { children: React.ReactNode }) {
 /**
  * Single-page landing site.
  *
- * Section order follows the reference site's rhythm: establish the project,
- * show the homes, show the life, show the price, prove the place, then
- * convert. Nav ids in Header.tsx must stay in sync with the ids below.
+ * Section order leads with the offer, followed by the project overview.
+ * Nav ids in Header.tsx must stay in sync with the ids below.
  */
 export default function App() {
   return (
@@ -45,8 +44,8 @@ export default function App() {
       <Header />
       <main id="main">
         <Hero />
-        <Overview />
         <Offer />
+        <Overview />
         <Residences />
         <Amenities />
         <Pricing />
