@@ -115,8 +115,17 @@ const empty: FormState = {
   website: "",
 };
 
+const pricingOptions = [
+  "1350 - 1.4Cr",
+  "1550 - 1.6Cr",
+  "1720 - 1.8Cr",
+  "2045 - 2.1Cr",
+  "2345 - 2.4Cr",
+  "2880 - 2.8Cr",
+];
+
 const configurations = [
-  "Premium 2, 2.5 & 3 BHK · 1,350 – 2,880 sft",
+  ...pricingOptions,
   "Sundeck apartment",
   "Centre-balcony apartment",
   "Not sure yet — please advise",
