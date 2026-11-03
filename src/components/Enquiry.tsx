@@ -101,7 +101,7 @@ interface FormState {
   phone: string;
   email: string;
   configuration: string;
-  message: string;
+  facing: string;
   /** Honeypot — a real bot fills this, a human never sees it. */
   website: string;
 }
@@ -111,25 +111,12 @@ const empty: FormState = {
   phone: "",
   email: "",
   configuration: "",
-  message: "",
+  facing: "",
   website: "",
 };
 
-const pricingOptions = [
-  "1350 - 1.4Cr",
-  "1550 - 1.6Cr",
-  "1720 - 1.8Cr",
-  "2045 - 2.1Cr",
-  "2345 - 2.4Cr",
-  "2880 - 2.8Cr",
-];
-
-const configurations = [
-  ...pricingOptions,
-  "Sundeck apartment",
-  "Centre-balcony apartment",
-  "Not sure yet — please advise",
-];
+const requirements = ["1350", "1550", "1720", "2045", "2550", "2880"];
+const preferredFacings = ["East", "West", "North"];
 
 /**
  * ---------------------------------------------------------------------
@@ -176,8 +163,16 @@ export function EnquiryForm({
       if (raw) {
         const saved = JSON.parse(raw) as Partial<FormState> & {
           budget?: unknown;
+          message?: unknown;
         };
         delete saved.budget;
+        delete saved.message;
+        if (saved.configuration && !requirements.includes(saved.configuration)) {
+          saved.configuration = "";
+        }
+        if (saved.facing && !preferredFacings.includes(saved.facing)) {
+          saved.facing = "";
+        }
         setForm((f) => ({ ...f, ...saved }));
       }
     } catch {
@@ -210,7 +205,13 @@ export function EnquiryForm({
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim()))
       next.email = "Enter a valid email address.";
     if (!form.configuration)
-      next.configuration = "Please select a configuration of interest.";
+      next.configuration = "Please select a requirement.";
+    else if (!requirements.includes(form.configuration))
+      next.configuration = "Please select one of the listed unit sizes.";
+    if (!form.facing)
+      next.facing = "Please select your preferred facing.";
+    else if (!preferredFacings.includes(form.facing))
+      next.facing = "Please select one of the listed facings.";
     if (!consent) next.consent = "Please confirm we may contact you.";
     return next;
   };
@@ -240,8 +241,8 @@ export function EnquiryForm({
       `• Phone: ${form.phone.trim()}`,
     ];
     if (form.email.trim()) lines.push(`• Email: ${form.email.trim()}`);
-    if (form.configuration) lines.push(`• Configuration: ${form.configuration}`);
-    if (form.message.trim()) lines.push(`• Message: ${form.message.trim()}`);
+    if (form.configuration) lines.push(`• Requirement: ${form.configuration} sft`);
+    if (form.facing) lines.push(`• Preferred facing: ${form.facing}`);
     lines.push(`• Enquiry type: ${request.type}`);
     if (request.details) lines.push(`• Requested: ${request.details}`);
     lines.push("", project.reraLabel);
@@ -263,7 +264,7 @@ export function EnquiryForm({
       phone: form.phone.trim(),
       email: form.email.trim() || undefined,
       configuration: form.configuration || undefined,
-      message: form.message.trim() || undefined,
+      preferredFacing: form.facing || undefined,
       enquiryType: request.type,
       enquiryDetails: request.details,
       project: project.name,
@@ -355,7 +356,7 @@ export function EnquiryForm({
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className={labelCls} htmlFor={`${idPrefix}-name`}>
-              Full name <span className={requiredMark} aria-hidden="true">*</span>
+              Name <span className={requiredMark} aria-hidden="true">*</span>
             </label>
             <input
               id={`${idPrefix}-name`}
@@ -372,7 +373,7 @@ export function EnquiryForm({
           </div>
           <div>
             <label className={labelCls} htmlFor={`${idPrefix}-phone`}>
-              Phone number <span className={requiredMark} aria-hidden="true">*</span>
+              Number <span className={requiredMark} aria-hidden="true">*</span>
             </label>
             <input
               id={`${idPrefix}-phone`}
@@ -393,7 +394,7 @@ export function EnquiryForm({
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className={labelCls} htmlFor={`${idPrefix}-email`}>
-              Email address <span className={requiredMark} aria-hidden="true">*</span>
+              Mail id <span className={requiredMark} aria-hidden="true">*</span>
             </label>
             <input
               id={`${idPrefix}-email`}
@@ -410,7 +411,7 @@ export function EnquiryForm({
           </div>
           <div>
             <label className={labelCls} htmlFor={`${idPrefix}-config`}>
-              Configuration of interest <span className={requiredMark} aria-hidden="true">*</span>
+              Requirement <span className={requiredMark} aria-hidden="true">*</span>
             </label>
             <select
               id={`${idPrefix}-config`}
@@ -422,9 +423,9 @@ export function EnquiryForm({
               aria-invalid={Boolean(errors.configuration)}
             >
               <option value="">Select…</option>
-              {configurations.map((c) => (
-                <option key={c} value={c}>
-                  {c}
+              {requirements.map((size) => (
+                <option key={size} value={size}>
+                  {size}
                 </option>
               ))}
             </select>
@@ -432,18 +433,26 @@ export function EnquiryForm({
           </div>
         </div>
         <div>
-          <label className={labelCls} htmlFor={`${idPrefix}-message`}>
-            Message / preferred time <span className={subtleText}>(optional)</span>
+          <label className={labelCls} htmlFor={`${idPrefix}-facing`}>
+            Preferred Facing <span className={requiredMark} aria-hidden="true">*</span>
           </label>
-          <textarea
-            id={`${idPrefix}-message`}
-            name="message"
-            rows={variant === "modal" ? 3 : 3}
-            className={`${inputCls("message")} resize-y`}
-            placeholder="Preferred floor, facing, timeline…"
-            value={form.message}
-            onChange={(e) => set("message", e.target.value)}
-          />
+          <select
+            id={`${idPrefix}-facing`}
+            name="facing"
+            required
+            className={inputCls("facing")}
+            value={form.facing}
+            onChange={(e) => set("facing", e.target.value)}
+            aria-invalid={Boolean(errors.facing)}
+          >
+            <option value="">Select…</option>
+            {preferredFacings.map((facing) => (
+              <option key={facing} value={facing}>
+                {facing}
+              </option>
+            ))}
+          </select>
+          {field("facing")}
         </div>
 
         {request.details && (

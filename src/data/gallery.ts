@@ -16,6 +16,24 @@ export interface GalleryItem {
 
 export const galleryItems: GalleryItem[] = [
   {
+    src: "/assets/gallery/construction-progress.jpg",
+    alt: "Aerial photograph showing Rajapushpa Imperia towers during construction",
+    caption: "Construction progress",
+    tag: "Construction",
+  },
+  {
+    src: "/assets/gallery/clubhouse-day.jpg",
+    alt: "Daytime architectural render of the clubhouse exterior at Rajapushpa Imperia",
+    caption: "Clubhouse exterior",
+    tag: "Clubhouse",
+  },
+  {
+    src: "/assets/gallery/clubhouse-evening.jpg",
+    alt: "Evening architectural render of the clubhouse exterior at Rajapushpa Imperia",
+    caption: "Clubhouse at dusk",
+    tag: "Clubhouse",
+  },
+  {
     src: "/assets/hero/hero-towers.webp",
     alt: "Architectural render of the Rajapushpa Imperia residential towers at dusk",
     caption: "The towers, as rendered in the brochure",

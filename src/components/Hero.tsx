@@ -1,8 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
-import { project, stats } from "../data/projectData";
-import { offer } from "../data/pricing";
-import { useEnquiry } from "./Enquiry";
+import { project, residenceSummary } from "../data/projectData";
 
 /**
  * Full-bleed cinematic hero.
@@ -12,7 +9,6 @@ import { useEnquiry } from "./Enquiry";
  */
 export default function Hero() {
   const reduced = useReducedMotion();
-  const { openEnquiry } = useEnquiry();
 
   const goTo = (id: string) => {
     const el = document.getElementById(id);
@@ -25,7 +21,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative isolate min-h-[100svh] overflow-hidden bg-forest-dark">
+    <section id="hero" className="relative isolate min-h-[78svh] overflow-hidden bg-forest-dark md:min-h-[82svh]">
       <img
         src="/assets/hero/hero-towers.webp"
         alt="Architectural render of the Rajapushpa Imperia residential towers at dusk, within Rajapushpa Lifestyle City"
@@ -39,7 +35,7 @@ export default function Hero() {
         className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(52,17,23,0.72)_0%,rgba(52,17,23,0.36)_32%,rgba(52,17,23,0.52)_62%,rgba(52,17,23,0.92)_100%)]"
       />
 
-      <div className="container-x relative flex min-h-[100svh] flex-col justify-end pb-14 pt-28 md:pb-16 md:pt-32">
+      <div className="container-x relative flex min-h-[78svh] flex-col justify-end pb-12 pt-28 md:min-h-[82svh] md:pb-14 md:pt-32">
         <div className="max-w-4xl">
           <motion.h1
             initial={reduced ? false : { opacity: 0, y: 22 }}
@@ -47,88 +43,30 @@ export default function Hero() {
             transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 0.61, 0.36, 1] }}
             className="display-1 mt-5 !text-ivory drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]"
           >
-            Space to live.
-            <br />
-            <span className="italic text-ivory">Room to belong.</span>
+            {project.name}
           </motion.h1>
 
-          <motion.p
+          <motion.div
             initial={reduced ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.22 }}
-            className="mt-6 max-w-2xl text-[1.02rem] leading-relaxed text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)] md:text-[1.1rem]"
+            className="mt-6 flex max-w-4xl flex-col gap-2 text-[0.94rem] font-medium text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)] sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-2 md:text-base"
           >
-            {project.name} is a 24-acre development of 8 towers and 40 floors inside
-            Rajapushpa Lifestyle City at Tellapur — where the brochure leaves more than
-            82% of the ground open, and every home looks onto landscape.
-          </motion.p>
-
-          <p className="mt-4 text-sm font-semibold tracking-wide text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)] md:text-base">
-            Premium 2, 2.5 &amp; 3 BHK Homes · 1,350–2,880 sft
-          </p>
+            <span>From {residenceSummary.startingPrice}</span>
+            <span>{residenceSummary.types} · {residenceSummary.sizeRange}</span>
+            <span>{project.locationLine}</span>
+          </motion.div>
 
           <motion.div
             initial={reduced ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-9 flex flex-wrap items-center gap-3"
+            className="mt-7 flex flex-wrap items-center gap-3"
           >
-            <button type="button" onClick={() => goTo("residences")} className="btn btn-accent">
-              Explore Residences
-            </button>
-            <button
-              type="button"
-              onClick={() =>
-                openEnquiry({ type: "Project Details Request" })
-              }
-              className="btn btn-light"
-            >
-              Request Project Details
+            <button type="button" onClick={() => goTo("contact")} className="btn btn-accent">
+              Enquire Now
             </button>
           </motion.div>
-        </div>
-
-        {/* Verified headline figures, straight from the brochure. */}
-        <motion.dl
-          initial={reduced ? false : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.42 }}
-          className="mt-12 grid grid-cols-2 gap-x-6 gap-y-7 border-t border-ivory/15 pt-8 sm:grid-cols-4 md:mt-16"
-        >
-          {stats.map((s) => (
-            <div key={s.label}>
-              <dt className="sr-only">{s.label}</dt>
-              <dd>
-                <span className="tnum block font-display text-[2.1rem] leading-none text-ivory md:text-[2.6rem]">
-                  {s.value}
-                </span>
-                <span className="mt-2 block text-[0.8rem] uppercase tracking-[0.14em] text-ivory/85">
-                  {s.label}
-                </span>
-              </dd>
-            </div>
-          ))}
-        </motion.dl>
-
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-6">
-          <p className="text-xs uppercase tracking-[0.16em] text-ivory/85">
-            {project.reraLabel}
-          </p>
-
-          <button
-            type="button"
-            onClick={() => goTo("overview")}
-            className="group hidden items-center gap-2 text-xs uppercase tracking-[0.16em] text-ivory/85 transition hover:text-ivory md:flex"
-          >
-            Scroll
-            <span className="grid h-9 w-9 place-items-center rounded-full border border-ivory/25 transition group-hover:border-ivory/60">
-              <ArrowDown size={15} className="animate-bounce" />
-            </span>
-          </button>
-
-          <p className="text-xs uppercase tracking-[0.16em] text-ivory/85">
-            {offer.configurations}
-          </p>
         </div>
       </div>
     </section>

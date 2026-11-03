@@ -40,6 +40,7 @@ export const residenceSummary = {
   types: "Premium 2, 2.5 & 3 BHK Homes",
   sizeRange: "1,350 – 2,880 sft",
   sizeRangeNote: "Premium 2, 2.5 & 3 BHK Homes · 1,350 – 2,880 sft",
+  startingPrice: "₹1.99 Cr*",
   highlights: [
     "Premium Lifestyle 2, 2.5 & 3 BHK Apartments",
     "Sundeck Apartments",
@@ -49,16 +50,26 @@ export const residenceSummary = {
   ],
 };
 
+export const projectHighlights = [
+  { value: "3 BHK", detail: "Premium lifestyle apartments", icon: "home" },
+  { value: "24", detail: "Acres", icon: "land" },
+  { value: "8 Towers", detail: "40 floors", icon: "towers" },
+  { value: "Grand Clubhouse", detail: "G+4 floors", icon: "clubhouse" },
+  { value: "More than 82%", detail: "Open space", icon: "open-space" },
+  { value: "2 Swimming Pools", detail: "With deck", icon: "pool" },
+  { value: "Work From Home", detail: "Office spaces", icon: "work" },
+  { value: "Sundeck", detail: "Apartments", icon: "sundeck" },
+  { value: "₹1.99 Cr*", detail: "Onwards", icon: "price" },
+  { value: "10.4 feet", detail: "Floor height", icon: "height" },
+  { value: "Phase 1 OC", detail: "Received", icon: "possession" },
+  { value: "Electric Car", detail: "Charging provision", icon: "charging" },
+] as const;
+
 export const overview = {
   eyebrow: "The Project",
   title: "A community designed to give you more life per sq.\u00a0ft.",
   intro:
     "Rajapushpa Imperia is a 24-acre development of 8 towers and 40 floors inside Rajapushpa Lifestyle City at Tellapur — where the brochure leaves more than 82% of the ground open, and every home looks onto landscape.",
-  body: [
-    "At Imperia, the plan puts towers on the edges of the site and gives the centre back to landscape, so homes look onto greenery rather than vehicular movement. Podium-level promenades, a central lawn and a clubhouse form the social core of the community.",
-    "Every tower carries a shared vocabulary — an imposing entrance lounge, high-speed elevators, dedicated pick-up and drop-off zones and 100% power backup — as listed in the brochure’s exclusive project features.",
-    
-  ],
   image: "/assets/architecture/promenade.webp",
   imageAlt:
     "Landscaped podium promenade with families walking, from the Rajapushpa Imperia brochure",

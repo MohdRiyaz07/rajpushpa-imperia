@@ -196,6 +196,7 @@ export const offer = {
       phase: "Phase-I",
       title: "OC Received · No GST",
       badge: "READY TO MOVE-IN",
+      summary: "OC received · No GST · Ready to move in",
       lines: [
         "Occupancy Certificate received, as stated in the supplied offer material",
         "No GST on the purchase",
@@ -207,6 +208,7 @@ export const offer = {
       phase: "Phase-II",
       title: "Pay 50% Now · 50% at Possession",
       badge: "FLEXIBLE PAYMENT",
+      summary: "Pay 50% now and 50% at possession",
       lines: [
         "Pay 50% now",
         "Pay 50% at the time of possession",
@@ -214,8 +216,6 @@ export const offer = {
       ],
     },
   ],
-  caveat:
-    "Reproduced from the supplied promotional offer. Promotional claims are not independently verified current guarantees — confirm applicability, tower allocation and timelines with the sales team.",
 };
 
 /**
@@ -243,6 +243,4 @@ export const pricingIntro = {
   title: "Request the current price sheet.",
   lede:
     "The original price sheet contains the listed rates, charges, payment schedule and terms.",
-  disclaimer:
-    "Prices, charges, payment terms and offers reproduced here require confirmation with the developer or authorized sales team. The price sheet itself states that prices are subject to change without any prior notice.",
 };

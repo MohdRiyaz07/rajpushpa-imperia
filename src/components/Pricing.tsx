@@ -94,12 +94,6 @@ export default function Pricing() {
             </div>
           </Reveal>
         </div>
-
-        <Reveal delay={0.1}>
-          <p className="mt-10 border-t border-charcoal/10 pt-6 text-[0.82rem] leading-relaxed text-muted">
-            {pricingIntro.disclaimer}
-          </p>
-        </Reveal>
       </div>
     </Section>
   );

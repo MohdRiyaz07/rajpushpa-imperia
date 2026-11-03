@@ -120,12 +120,11 @@ export default function OfferPopup() {
                 id="offer-popup-title"
                 className="display-2 mt-4 max-w-xl text-forest-dark"
               >
-                {offer.headline}
+                Two clear ways to own.
               </h2>
               <p className="mt-3 text-sm font-medium text-forest">
-                {offer.locationLine}
+                {project.locationLine}
               </p>
-              <p className="mt-1 text-sm text-muted">{offer.configurations}</p>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {offer.options.map((option) => (
@@ -138,7 +137,7 @@ export default function OfferPopup() {
                       {option.title}
                     </h3>
                     <p className="mt-2 text-[0.74rem] leading-relaxed text-muted">
-                      {option.lines[0]}
+                      {option.summary}
                     </p>
                   </div>
                 ))}
@@ -151,9 +150,6 @@ export default function OfferPopup() {
               >
                 Enquire about this offer <ArrowRight size={15} />
               </button>
-              <p className="mt-4 text-[0.72rem] leading-relaxed text-muted">
-                {offer.caveat}
-              </p>
             </div>
           </motion.section>
         </motion.div>

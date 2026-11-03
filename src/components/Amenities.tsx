@@ -1,17 +1,23 @@
 import {
   Baby,
+  Bike,
+  Building2,
   Car,
   Dumbbell,
+  Flower2,
+  Gamepad2,
   Heart,
   ShieldCheck,
   Sparkles,
   TreePine,
   Users,
   Waves,
+  Wifi,
   type LucideIcon,
 } from "lucide-react";
 import { amenityGroups, type AmenityIcon } from "../data/amenities";
 import { Reveal, Section, SectionHead } from "./ui";
+import { useState } from "react";
 
 const iconMap: Record<AmenityIcon, LucideIcon> = {
   waves: Waves,
@@ -26,89 +32,114 @@ const iconMap: Record<AmenityIcon, LucideIcon> = {
 };
 
 /**
- * Amenities — the brochure's grouped amenity lists, reproduced item for item,
- * with the brochure imagery that belongs to each group.
+ * Amenities — the brochure's grouped amenity lists, presented as icon cards.
  */
 export default function Amenities() {
+  const [selectedGroup, setSelectedGroup] = useState("all");
   const total = amenityGroups.reduce((n, g) => n + g.items.length, 0);
+  const visibleGroups =
+    selectedGroup === "all"
+      ? amenityGroups
+      : amenityGroups.filter((group) => group.id === selectedGroup);
+
+  const iconFor = (item: string, fallback: LucideIcon): LucideIcon => {
+    const text = item.toLowerCase();
+    if (/pool|water|fountain|waterscape/.test(text)) return Waves;
+    if (/gym|fitness|cross fit|sport|court|cricket|tennis|badminton|squash/.test(text))
+      return Dumbbell;
+    if (/child|kid|creche|toddler|school|play area/.test(text)) return Baby;
+    if (/tree|forest|landscape|lawn|garden|park|plant|plaza/.test(text))
+      return TreePine;
+    if (/cycle|cycling|bicycle|jogging/.test(text)) return Bike;
+    if (/security|entry|exit|surveillance|fencing/.test(text)) return ShieldCheck;
+    if (/car|parking|vehicle|ramp/.test(text)) return Car;
+    if (/internet|connectivity|work from home/.test(text)) return Wifi;
+    if (/game|billiard|carrom|foosball|air hockey|table tennis/.test(text))
+      return Gamepad2;
+    if (/spa|yoga|meditation|wellness/.test(text)) return Heart;
+    if (/club|lounge|hall|restaurant|conference|library|guest suite/.test(text))
+      return Building2;
+    if (/fountain|interactive|decor|water feature/.test(text)) return Sparkles;
+    if (/flower|exotic|designer/.test(text)) return Flower2;
+    if (/people|family|community/.test(text)) return Users;
+    return fallback;
+  };
 
   return (
-    <Section id="amenities" tone="dark" className="scroll-mt-20 py-20 md:py-28">
+    <Section id="amenities" tone="ivory" className="scroll-mt-20 py-16 md:py-24">
       <div className="container-x">
         <SectionHead
           eyebrow="Amenities"
-          title="More life per sq. ft."
-          lede="Every item below is listed in the supplied brochure — the fitness spread, the childhood spread, the clubhouse features and the exclusive project features. Nothing has been added."
-          tone="light"
+          title="Spaces for every part of life."
+          lede="Explore the amenities listed in the supplied project brochure."
+          align="center"
         />
 
-        <Reveal delay={0.1}>
-          <p className="tnum mt-6 text-[0.8rem] uppercase tracking-[0.16em] text-ivory/85">
-            {total} listed amenities across {amenityGroups.length} groups
-          </p>
-        </Reveal>
+        <div className="mt-8 flex justify-center">
+          <div
+            className="flex max-w-full gap-2 overflow-x-auto px-1 pb-2"
+            role="group"
+            aria-label="Filter amenities by category"
+          >
+            <button
+              type="button"
+              onClick={() => setSelectedGroup("all")}
+              aria-pressed={selectedGroup === "all"}
+              className={`shrink-0 rounded-full border px-4 py-2 text-sm transition ${
+                selectedGroup === "all"
+                  ? "border-forest bg-forest text-white"
+                  : "border-charcoal/15 bg-white text-charcoal/75 hover:border-forest/50"
+              }`}
+            >
+              All amenities <span className="ml-1 opacity-70">({total})</span>
+            </button>
+            {amenityGroups.map((group) => (
+              <button
+                key={group.id}
+                type="button"
+                onClick={() => setSelectedGroup(group.id)}
+                aria-pressed={selectedGroup === group.id}
+                className={`shrink-0 rounded-full border px-4 py-2 text-sm transition ${
+                  selectedGroup === group.id
+                    ? "border-forest bg-forest text-white"
+                    : "border-charcoal/15 bg-white text-charcoal/75 hover:border-forest/50"
+                }`}
+              >
+                {group.title}
+              </button>
+            ))}
+          </div>
+        </div>
 
-        <div className="mt-12 space-y-6">
-          {amenityGroups.map((group, gi) => {
-            const Icon = iconMap[group.icon];
-            return (
-              <Reveal key={group.id} delay={0.05 * gi}>
-                <article className="overflow-hidden rounded-2xl border border-ivory/12 bg-white/[0.035] backdrop-blur-sm">
-                  <div
-                    className={`grid gap-0 ${
-                      group.image ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)]" : ""
-                    }`}
-                  >
-                    <div className="p-7 md:p-9">
-                      <div className="flex items-start gap-4">
-                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-terracotta/15 text-rose-100">
-                          <Icon size={20} />
-                        </span>
-                        <div>
-                          <h3 className="display-3 text-ivory">{group.title}</h3>
-                          <p className="mt-2 max-w-xl text-[0.9rem] leading-relaxed text-ivory/85">
-                            {group.blurb}
-                          </p>
-                        </div>
-                      </div>
-
-                      <ul className="mt-7 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
-                        {group.items.map((item) => (
-                          <li
-                            key={item}
-                            className="flex items-start gap-2.5 border-b border-ivory/8 pb-2.5 text-[0.88rem] leading-snug text-ivory/80"
-                          >
-                            <span
-                              aria-hidden="true"
-                              className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-terracotta"
-                            />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {group.image && (
-                      <div className="relative min-h-[220px] overflow-hidden lg:min-h-full">
-                        <img
-                          src={group.image}
-                          alt={group.imageAlt ?? ""}
-                          loading="lazy"
-                          decoding="async"
-                          className="absolute inset-0 h-full w-full object-cover"
-                        />
-                        <div
-                          aria-hidden="true"
-                          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(52,17,23,0.92)_0%,rgba(52,17,23,0.25)_45%,rgba(52,17,23,0)_100%)] lg:block"
-                        />
-                      </div>
+        <div
+          className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-5"
+          aria-live="polite"
+        >
+          {visibleGroups.flatMap((group) => {
+            const FallbackIcon = iconMap[group.icon];
+            return group.items.map((item, index) => {
+              const Icon = iconFor(item, FallbackIcon);
+              return (
+                <Reveal key={`${group.id}-${item}`} delay={Math.min(index * 0.015, 0.12)}>
+                  <article className="flex min-h-36 h-full flex-col items-center justify-center rounded-xl border border-charcoal/8 bg-white px-3 py-5 text-center shadow-[0_2px_12px_rgba(34,39,34,0.035)] transition duration-200 hover:-translate-y-0.5 hover:border-forest/25 hover:shadow-md sm:min-h-40 sm:px-4">
+                    <span className="grid h-12 w-12 place-items-center rounded-full bg-sage/70 text-forest-dark">
+                      <Icon size={22} strokeWidth={1.7} aria-hidden="true" />
+                    </span>
+                    <h3 className="mt-3 text-[0.82rem] font-medium leading-snug text-charcoal sm:text-[0.88rem]">
+                      {item}
+                    </h3>
+                    {selectedGroup === "all" && (
+                      <p className="mt-1.5 text-[0.65rem] uppercase tracking-[0.1em] text-muted">
+                        {group.title}
+                      </p>
                     )}
-                  </div>
-                </article>
-              </Reveal>
-            );
+                  </article>
+                </Reveal>
+              );
+            });
           })}
         </div>
+
       </div>
     </Section>
   );

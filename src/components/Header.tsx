@@ -12,14 +12,15 @@ export interface NavItem {
 }
 
 export const navItems: NavItem[] = [
+  { id: "hero", label: "Home" },
+  { id: "contact", label: "Enquire" },
+  { id: "overview", label: "About" },
   { id: "offer", label: "Offers" },
-  { id: "overview", label: "Overview" },
-  { id: "residences", label: "Residences" },
   { id: "amenities", label: "Amenities" },
+  { id: "gallery", label: "Gallery" },
   { id: "floor-plans", label: "Floor Plans" },
   { id: "pricing", label: "Pricing" },
   { id: "location", label: "Location" },
-  { id: "gallery", label: "Gallery" },
 ];
 
 /** Pixels of clearance left above a scroll target so headings clear the header. */
@@ -89,10 +90,10 @@ export default function Header() {
   return (
     <>
       <a
-        href="#overview"
+        href="#contact"
         onClick={(e) => {
           e.preventDefault();
-          goTo("overview");
+          goTo("contact");
         }}
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[110] focus:rounded-md focus:bg-forest focus:px-4 focus:py-2 focus:text-ivory"
       >
