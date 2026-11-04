@@ -14,9 +14,7 @@ import Location from "./components/Location";
 import StickyActions from "./components/StickyActions";
 import { project } from "./data/projectData";
 
-// The estimator and FAQ are not in the primary navigation, so defer their code
-// until a visitor scrolls near them without delaying section anchor targets.
-const CostEstimator = lazy(() => import("./components/CostEstimator"));
+// Defer the FAQ until a visitor scrolls near it without delaying section anchors.
 const FAQ = lazy(() => import("./components/FAQ"));
 
 function Deferred({ children }: { children: React.ReactNode }) {
@@ -85,9 +83,6 @@ export default function App() {
         <Gallery />
         <Residences />
         <Pricing />
-        <Deferred>
-          <CostEstimator />
-        </Deferred>
         <Location />
         <Deferred>
           <FAQ />

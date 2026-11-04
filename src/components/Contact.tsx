@@ -30,7 +30,7 @@ export default function Contact() {
     <Section id="contact" tone="dark" className="scroll-mt-20 py-20 md:py-28">
       <div className="container-x">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
-          <div className="min-w-0">
+          <div className="hidden min-w-0 lg:block">
             <SectionHead
               eyebrow="Enquire"
               title="Your new beginning starts here."

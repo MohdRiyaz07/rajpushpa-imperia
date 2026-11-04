@@ -40,7 +40,7 @@ export const residenceSummary = {
   types: "Premium 2, 2.5 & 3 BHK Homes",
   sizeRange: "1,350 – 2,880 sft",
   sizeRangeNote: "Premium 2, 2.5 & 3 BHK Homes · 1,350 – 2,880 sft",
-  startingPrice: "₹1.99 Cr*",
+  startingPrice: "₹1.4 Cr*",
   highlights: [
     "Premium Lifestyle 2, 2.5 & 3 BHK Apartments",
     "Sundeck Apartments",
@@ -95,10 +95,6 @@ export const faqs: { q: string; a: string }[] = [
   {
     q: "What phases does the offer mention?",
     a: "The supplied offer material describes two ways to own: Phase-I — OC received, no GST, ready to move-in; Phase-II — pay 50% now and 50% at the time of possession. These are promotional claims reproduced from that material, not independently verified current guarantees. Confirm current applicability with the sales team.",
-  },
-  {
-    q: "What does the cost estimator include?",
-    a: "It itemises: base price (phase rate × area), floor-rise charge from the 5th floor, east/north-facing charge, corner charge, view or courtyard-view charge, W.E.G. charge, double back-to-back parking, clubhouse charge and legal & documentation charge — all rates as printed on the supplied price sheet. It excludes GST, stamp duty, registration, corpus fund and maintenance unless the price sheet lists them; those must be confirmed with the sales team.",
   },
   {
     q: "How can I confirm current pricing and availability?",

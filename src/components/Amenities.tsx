@@ -36,7 +36,6 @@ const iconMap: Record<AmenityIcon, LucideIcon> = {
  */
 export default function Amenities() {
   const [selectedGroup, setSelectedGroup] = useState("all");
-  const total = amenityGroups.reduce((n, g) => n + g.items.length, 0);
   const visibleGroups =
     selectedGroup === "all"
       ? amenityGroups
@@ -81,23 +80,13 @@ export default function Amenities() {
             role="group"
             aria-label="Filter amenities by category"
           >
-            <button
-              type="button"
-              onClick={() => setSelectedGroup("all")}
-              aria-pressed={selectedGroup === "all"}
-              className={`shrink-0 rounded-full border px-4 py-2 text-sm transition ${
-                selectedGroup === "all"
-                  ? "border-forest bg-forest text-white"
-                  : "border-charcoal/15 bg-white text-charcoal/75 hover:border-forest/50"
-              }`}
-            >
-              All amenities <span className="ml-1 opacity-70">({total})</span>
-            </button>
             {amenityGroups.map((group) => (
               <button
                 key={group.id}
                 type="button"
-                onClick={() => setSelectedGroup(group.id)}
+                onClick={() =>
+                  setSelectedGroup(selectedGroup === group.id ? "all" : group.id)
+                }
                 aria-pressed={selectedGroup === group.id}
                 className={`shrink-0 rounded-full border px-4 py-2 text-sm transition ${
                   selectedGroup === group.id
