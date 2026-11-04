@@ -17,7 +17,9 @@ export default function OfferPopup() {
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      if (!enquiryOpenRef.current) setOpen(true);
+      if (window.matchMedia("(min-width: 768px)").matches && !enquiryOpenRef.current) {
+        setOpen(true);
+      }
     }, 3500);
     return () => window.clearTimeout(timer);
   }, []);

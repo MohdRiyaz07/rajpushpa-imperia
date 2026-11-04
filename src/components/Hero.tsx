@@ -24,6 +24,10 @@ export default function Hero() {
     <section id="hero" className="relative isolate min-h-[78svh] overflow-hidden bg-forest-dark md:min-h-[82svh]">
       <img
         src="/assets/hero/hero-towers.webp"
+        srcSet="/assets/hero/hero-towers-640.webp 640w, /assets/hero/hero-towers-768.webp 768w, /assets/hero/hero-towers-960.webp 960w, /assets/hero/hero-towers-1280.webp 1280w, /assets/hero/hero-towers-1600.webp 1600w, /assets/hero/hero-towers.webp 2200w"
+        sizes="100vw"
+        width={2200}
+        height={1557}
         alt="Architectural render of the Rajapushpa Imperia residential towers at dusk, within Rajapushpa Lifestyle City"
         className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
         decoding="async"
