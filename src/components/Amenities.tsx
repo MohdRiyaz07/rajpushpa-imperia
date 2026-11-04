@@ -35,11 +35,11 @@ const iconMap: Record<AmenityIcon, LucideIcon> = {
  * Amenities — the brochure's grouped amenity lists, presented as icon cards.
  */
 export default function Amenities() {
-  const [selectedGroup, setSelectedGroup] = useState("all");
-  const visibleGroups =
-    selectedGroup === "all"
-      ? amenityGroups
-      : amenityGroups.filter((group) => group.id === selectedGroup);
+  const [selectedGroup, setSelectedGroup] = useState("clubhouse");
+  const orderedGroups = [...amenityGroups].sort((a, b) =>
+    a.id === "clubhouse" ? -1 : b.id === "clubhouse" ? 1 : 0
+  );
+  const visibleGroups = amenityGroups.filter((group) => group.id === selectedGroup);
 
   const iconFor = (item: string, fallback: LucideIcon): LucideIcon => {
     const text = item.toLowerCase();
@@ -80,13 +80,11 @@ export default function Amenities() {
             role="group"
             aria-label="Filter amenities by category"
           >
-            {amenityGroups.map((group) => (
+            {orderedGroups.map((group) => (
               <button
                 key={group.id}
                 type="button"
-                onClick={() =>
-                  setSelectedGroup(selectedGroup === group.id ? "all" : group.id)
-                }
+                onClick={() => setSelectedGroup(group.id)}
                 aria-pressed={selectedGroup === group.id}
                 className={`shrink-0 rounded-full border px-4 py-2 text-sm transition ${
                   selectedGroup === group.id
@@ -117,11 +115,6 @@ export default function Amenities() {
                     <h3 className="mt-3 text-[0.82rem] font-medium leading-snug text-charcoal sm:text-[0.88rem]">
                       {item}
                     </h3>
-                    {selectedGroup === "all" && (
-                      <p className="mt-1.5 text-[0.65rem] uppercase tracking-[0.1em] text-muted">
-                        {group.title}
-                      </p>
-                    )}
                   </article>
                 </Reveal>
               );
