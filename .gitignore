@@ -5,5 +5,8 @@ work/
 **/.env
 **/.env.*
 !.env.example
+/private/
+/server/enquiry-config.php
+/server/vendor/
 vite.log
 *.log

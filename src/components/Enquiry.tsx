@@ -10,8 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { AlertCircle, CheckCircle2, Lock, MessageCircle, X } from "lucide-react";
-import { priceSheetContact } from "../data/pricing";
+import { AlertCircle, CheckCircle2, Lock, Mail, X } from "lucide-react";
 import { project } from "../data/projectData";
 
 /* ------------------------------------------------------------------ */
@@ -92,8 +91,7 @@ export function EnquiryProvider({ children }: { children: ReactNode }) {
 
 /* ------------------------------------------------------------------ */
 /* Form — shared by the popup and the contact section.                 */
-/* Submitting composes a WhatsApp message to the sales number printed  */
-/* on the price sheet and opens it in a new tab for the user to send.  */
+/* Submitting sends the enquiry to the server-side email endpoint.     */
 /* ------------------------------------------------------------------ */
 
 interface FormState {
@@ -120,23 +118,26 @@ const preferredFacings = ["East", "West", "North"];
 
 /**
  * ---------------------------------------------------------------------
- * OPTIONAL BACKEND INTEGRATION POINT
- * ---------------------------------------------------------------------
- * Submitting always opens WhatsApp with the enquiry pre-filled. If
- * VITE_ENQUIRY_ENDPOINT is configured, the payload is also POSTed there
- * (CRM / form service). Without an endpoint only WhatsApp is used.
+ * The endpoint sends mail through Hostinger SMTP. SMTP credentials remain
+ * on the server and are never included in the frontend bundle.
  * ---------------------------------------------------------------------
  */
-const ENDPOINT = import.meta.env.VITE_ENQUIRY_ENDPOINT as string | undefined;
+const ENDPOINT = "/api/enquiry.php";
 
-async function postEnquiry(payload: Record<string, unknown>): Promise<void> {
-  if (!ENDPOINT) return;
+async function postEnquiry(
+  payload: Record<string, string | boolean | undefined>
+): Promise<void> {
   const res = await fetch(ENDPOINT, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
-  if (!res.ok) throw new Error(`Endpoint responded ${res.status}`);
+  const result = (await res.json().catch(() => null)) as
+    | { success?: boolean; message?: string }
+    | null;
+  if (!res.ok || result?.success !== true) {
+    throw new Error(result?.message || "We couldn't send your enquiry. Please try again.");
+  }
 }
 
 export function EnquiryForm({
@@ -150,7 +151,7 @@ export function EnquiryForm({
   request: EnquiryRequest;
 }) {
   const [form, setForm] = useState<FormState>(empty);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errors, setErrors] = useState<
     Partial<Record<keyof FormState | "consent", string>>
   >({});
@@ -216,9 +217,9 @@ export function EnquiryForm({
     return next;
   };
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (status === "success") return;
+    if (status === "success" || status === "sending") return;
 
     const found = validate();
     if (Object.keys(found).length > 0) {
@@ -227,60 +228,35 @@ export function EnquiryForm({
     }
     setErrors({});
 
-    // Honeypot: pretend success, open nothing.
+    // Keep bot submissions quiet without reporting a successful submission.
     if (form.website.trim() !== "") {
       return;
     }
 
-    const lines = [
-      `Hello ${project.name} team,`,
-      "",
-      "New enquiry from the website:",
-      `• Project: ${project.name}`,
-      `• Name: ${form.name.trim()}`,
-      `• Phone: ${form.phone.trim()}`,
-    ];
-    if (form.email.trim()) lines.push(`• Email: ${form.email.trim()}`);
-    if (form.configuration) lines.push(`• Requirement: ${form.configuration} sft`);
-    if (form.facing) lines.push(`• Preferred facing: ${form.facing}`);
-    lines.push(`• Enquiry type: ${request.type}`);
-    if (request.details) lines.push(`• Requested: ${request.details}`);
-    lines.push("", project.reraLabel);
-
-    const url = `https://wa.me/${priceSheetContact.whatsappNumber}?text=${encodeURIComponent(
-      lines.join("\n")
-    )}`;
-
-    const opened = window.open(url, "_blank");
-    if (!opened) {
-      setStatus("error");
-      return;
-    }
-    opened.opener = null;
-
-    // Best-effort backend copy — never blocks the WhatsApp hand-off.
-    void postEnquiry({
-      name: form.name.trim(),
-      phone: form.phone.trim(),
-      email: form.email.trim() || undefined,
-      configuration: form.configuration || undefined,
-      preferredFacing: form.facing || undefined,
-      enquiryType: request.type,
-      enquiryDetails: request.details,
-      project: project.name,
-      source: "landing-page",
-      submittedAt: new Date().toISOString(),
-    }).catch(() => {
-      /* WhatsApp already opened; ignore endpoint failures */
-    });
-
-    setStatus("success");
-    setForm(empty);
-    setConsent(false);
+    setStatus("sending");
     try {
-      localStorage.removeItem(DRAFT_KEY);
+      await postEnquiry({
+        name: form.name.trim(),
+        phone: form.phone.trim(),
+        email: form.email.trim(),
+        configuration: form.configuration,
+        preferredFacing: form.facing,
+        enquiryType: request.type,
+        enquiryDetails: request.details,
+        website: form.website,
+        consent: true,
+      });
+
+      setStatus("success");
+      setForm(empty);
+      setConsent(false);
+      try {
+        localStorage.removeItem(DRAFT_KEY);
+      } catch {
+        /* ignore unavailable storage */
+      }
     } catch {
-      /* ignore */
+      setStatus("error");
     }
   };
 
@@ -324,18 +300,11 @@ export function EnquiryForm({
         <h3 className={`display-3 mt-6 ${
           darkVariant ? "text-ivory" : "text-forest-dark"
         }`}>
-          Your message is ready in WhatsApp.
+          Your enquiry was accepted for delivery.
         </h3>
         <p className={`mt-3 max-w-sm text-[0.9rem] leading-relaxed ${subtleText}`}>
-          Tap <strong className={`font-semibold ${
-            darkVariant ? "text-ivory" : "text-forest-dark"
-          }`}>Send</strong> in
-          WhatsApp to deliver it to our sales team. This page cannot verify
-          whether the message was sent.
-        </p>
-        <p className={`mt-3 text-[0.82rem] leading-relaxed ${subtleText}`}>
-          This page cannot confirm or unlock requested materials automatically.
-          The sales team can follow up using your enquiry.
+          Your details have been sent to the project team. They can reply to the
+          email address you provided.
         </p>
         <button
           type="button"
@@ -525,36 +494,26 @@ export function EnquiryForm({
           }`}
         >
           <AlertCircle size={15} className="mt-0.5 shrink-0" />
-          Your browser blocked the WhatsApp window. Please call{" "}
-          <a href={priceSheetContact.phoneHref} className="font-medium underline">
-            {priceSheetContact.phone}
-          </a>{" "}
-          or{" "}
-          <a
-            href={priceSheetContact.whatsappHref}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="font-medium underline"
-          >
-            message us on WhatsApp
-          </a>
-          .
+          We couldn't send your enquiry. Please check your connection and try
+          again. Your details are still here.
         </p>
       )}
 
       <button
         type="submit"
+        disabled={status === "sending"}
+        aria-busy={status === "sending"}
         className={`btn btn-accent mt-6 w-full ${
           darkVariant ? "min-h-14 text-[0.95rem]" : ""
-        }`}
+        } ${status === "sending" ? "cursor-wait opacity-70" : ""}`}
       >
-        <MessageCircle size={16} />
-        Send on WhatsApp
+        <Mail size={16} />
+        {status === "sending" ? "Sending enquiry…" : "Send Enquiry"}
       </button>
 
       <p className={`mt-3.5 text-center text-[0.74rem] leading-relaxed ${subtleText}`}>
-        Submitting opens WhatsApp with your enquiry pre-filled — you review and
-        press Send there. Drafts stay in your browser.
+        Your details will be emailed to the project team. Drafts stay
+        in your browser until submitted.
       </p>
     </form>
   );
@@ -647,8 +606,8 @@ function EnquiryModal({
                 <span className="italic text-ivory">conversation.</span>
               </h2>
               <p className="mt-5 max-w-sm text-[0.96rem] leading-relaxed text-ivory/90">
-                Share a few details and prepare a WhatsApp enquiry for the
-                Rajapushpa Imperia project team.
+                Share a few details and send an enquiry to the Rajapushpa Imperia
+                project team.
               </p>
               <p className="mt-8 text-[0.76rem] leading-relaxed text-ivory/80">
                 {project.locationLine}
@@ -670,8 +629,7 @@ function EnquiryModal({
                 Request a private callback
               </h3>
               <p className="mt-2 max-w-xl text-[0.86rem] leading-relaxed text-ivory/85">
-                Complete the form to prepare a WhatsApp enquiry for the project
-                contact.
+                Complete the form to email your enquiry to the project team.
               </p>
               <p className="mt-4 inline-flex rounded-full border border-terracotta/35 bg-terracotta/10 px-3 py-1.5 text-[0.72rem] font-medium text-ivory/80">
                 {request.type}
